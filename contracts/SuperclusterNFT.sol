@@ -1,44 +1,47 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity 0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract SuperclusterNFT is ERC721, ERC721Enumerable, Ownable {
+contract SuperclusterNFT is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("test001", "SC") {}
+    address public TrustedBroadcastAddress =
+        0x5A7A9517f118dCCEfAFcB6AF99ADD30b904Ce9cb;
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "https://jsonkeeper.com/b/O574";
-    }
+    constructor() ERC721("SuperclusterV0.1", "SC") {}
 
-    function safeMint(address to) public onlyOwner {
+    function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
+        _setTokenURI(tokenId, uri);
+    }
+
+    function setTBA(address _TBA) public onlyOwner {
+        TrustedBroadcastAddress = _TBA;
     }
 
     // The following functions are overrides required by Solidity.
 
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 tokenId
-    ) internal override(ERC721, ERC721Enumerable) {
-        super._beforeTokenTransfer(from, to, tokenId);
+    function _burn(uint256 tokenId)
+        internal
+        override(ERC721, ERC721URIStorage)
+    {
+        super._burn(tokenId);
     }
 
-    function supportsInterface(bytes4 interfaceId)
+    function tokenURI(uint256 tokenId)
         public
         view
-        override(ERC721, ERC721Enumerable)
-        returns (bool)
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
     {
-        return super.supportsInterface(interfaceId);
+        return super.tokenURI(tokenId);
     }
 }
