@@ -15,7 +15,7 @@ async function main() {
 
   const contract = require("../artifacts/contracts/SuperclusterNFT.sol/SuperclusterNFT.json");
 
-  const contractAddress = "0x3A5D43c5b542330B911991774b95d354Acf09D1f";
+  const contractAddress = "0x6301E6278c099613Bb9947017F8a21163D130607";
 
   const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
