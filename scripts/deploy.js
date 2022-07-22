@@ -4,6 +4,7 @@
 // You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
+// command to deploy: npx hardhat --network matic run scripts/deploy.js
 const hre = require("hardhat");
 
 async function main() {
