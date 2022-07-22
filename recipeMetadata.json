@@ -1,0 +1,24 @@
+{
+  "name": "Recipe Guardian NFT",
+  "description": "For people who care about saving the universe one byte at a time. The dark forces are working hard to destroy the universe. By holding this artifact you're supporting the force field required to save the universe.",
+  "image": "ipfs://bafybeidj7emhfwiutzy6cvsuogyu6ugc4hoglxkgaf5hoqakrqb5wjjvse",
+  "attributes": [
+    {
+      "trait_type": "TBA",
+      "value": "0xebFE9190D00d61cA7dBCf00A0Cfdc6AE8E1B5264"
+    },
+    {
+      "trait_type": "Base",
+      "value": "Supercluster member"
+    },
+    {
+      "display_type": "boost_number",
+      "trait_type": "Power Level",
+      "value": 9000
+    },
+    {
+      "trait_type": "Heart",
+      "value": "Chocolatey"
+    }
+  ]
+}

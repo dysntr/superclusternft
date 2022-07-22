@@ -15,7 +15,11 @@ async function main() {
 
   const contract = require("../artifacts/contracts/SuperclusterNFT.sol/SuperclusterNFT.json");
 
-  const contractAddress = "0x57E7546d4AdD5758a61C01b84f0858FA0752e940";
+  // Green Warrior NFT Contract Address - 0x57E7546d4AdD5758a61C01b84f0858FA0752e940
+  // Mandelbrot NFT Contract Address - 0xEE232b653c862A2d94EC66F7f2596307Bc483dBE
+  // Galactic NFT Contract Address - 0xc9397648428436C6dd838bDaD2D5f484b80af7dA
+  // Recipe guardian Contract Address - 0x8900A5Cc4235392d9981D4C1dD373f13d89962Bb
+  const contractAddress = "0x8900A5Cc4235392d9981D4C1dD373f13d89962Bb";
 
   const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
@@ -69,20 +73,22 @@ async function main() {
 
   //   "https://bafkreih4msosv74zxrxffbgysc7dztu4ficbxqxjvc5u563cbun7zu5xm4.ipfs.nftstorage.link/"
 
-  wallet = "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20";
   // const wallets = [
   //   "0x5A7A9517f118dCCEfAFcB6AF99ADD30b904Ce9cb",
   //   "0xebFE9190D00d61cA7dBCf00A0Cfdc6AE8E1B5264",
   //   "0xE4475EF8717d14Bef6dCBAd55E41dE64a0cc8510",
   //   "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20",
   // ];
+  //Supercluster NFT - Green Warrior - "ipfs://bafkreih4msosv74zxrxffbgysc7dztu4ficbxqxjvc5u563cbun7zu5xm4"
+  //Supercluster NFT - Mandelbrot Wizard - "ipfs://bafkreic23ytqfhkeoc5mwvpwlrl7m5q3m47cwkvjv7peenejxzlzeqswsy"
+  //Supercluster NFT - Galactic Traveler - "ipfs://bafkreibdwudd4snhxuieck5nyq5ho6e5tohszbq47kn3uox7q7kkmcb2yq"
+  //Supercluster NFT - Recipe Guardian - "ipfs://bafkreihvcifpkay3q7jzjqrdtrc34loqcw4iiquasl36xcpn3pj6dbla2y"
 
-  //for (const wallet of wallets) {
+  wallet = "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20";
   await mintNFT(
     wallet,
-    "ipfs://bafkreih4msosv74zxrxffbgysc7dztu4ficbxqxjvc5u563cbun7zu5xm4"
+    "ipfs://bafkreihvcifpkay3q7jzjqrdtrc34loqcw4iiquasl36xcpn3pj6dbla2y"
   );
-  //}
 }
 
 main().catch((error) => {
