@@ -15,7 +15,7 @@ async function main() {
 
   const contract = require("../artifacts/contracts/SuperclusterNFT.sol/SuperclusterNFT.json");
 
-  const contractAddress = "0x6301E6278c099613Bb9947017F8a21163D130607";
+  const contractAddress = "0x57E7546d4AdD5758a61C01b84f0858FA0752e940";
 
   const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
@@ -69,11 +69,11 @@ async function main() {
 
   //   "https://bafkreih4msosv74zxrxffbgysc7dztu4ficbxqxjvc5u563cbun7zu5xm4.ipfs.nftstorage.link/"
 
-  wallet = "0x5A7A9517f118dCCEfAFcB6AF99ADD30b904Ce9cb";
+  wallet = "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20";
   // const wallets = [
   //   "0x5A7A9517f118dCCEfAFcB6AF99ADD30b904Ce9cb",
   //   "0xebFE9190D00d61cA7dBCf00A0Cfdc6AE8E1B5264",
-  //   "0x5D88f6EC856F54A4D9C31e63B95e818966139841",
+  //   "0xE4475EF8717d14Bef6dCBAd55E41dE64a0cc8510",
   //   "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20",
   // ];
 

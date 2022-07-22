@@ -16,7 +16,7 @@ contract SuperclusterNFT is ERC721, ERC721URIStorage, Ownable {
 
     event nftTransfer(address from, address to, uint256 tokenId);
 
-    constructor() ERC721("SuperclusterV0.11", "SC") {}
+    constructor() ERC721("Supercluster", "SC") {}
 
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
