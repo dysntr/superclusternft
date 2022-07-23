@@ -6,17 +6,19 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+/// @title SuperclusterNFT contract
 contract SuperclusterNFT is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
+    //TrustedBroadcastAddress is the source of truth for broadcasting content to followers
     address public TrustedBroadcastAddress =
-        0x5A7A9517f118dCCEfAFcB6AF99ADD30b904Ce9cb;
+        0xebFE9190D00d61cA7dBCf00A0Cfdc6AE8E1B5264;
 
     event nftTransfer(address from, address to, uint256 tokenId);
 
-    constructor() ERC721("Supercluster", "SC") {}
+    constructor() ERC721("Recipe", "coco") {}
 
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
@@ -25,6 +27,8 @@ contract SuperclusterNFT is ERC721, ERC721URIStorage, Ownable {
         _setTokenURI(tokenId, uri);
     }
 
+    /// @notice Allows changing of TrustedBroadcastAddress by owner
+    /// @param _TBA The new Trusted Broadcast Address
     function setTBA(address _TBA) public onlyOwner {
         TrustedBroadcastAddress = _TBA;
     }
