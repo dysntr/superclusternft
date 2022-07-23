@@ -6,11 +6,13 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+/// @title SuperclusterNFT contract
 contract SuperclusterNFT is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
+    //TrustedBroadcastAddress is the source of truth for broadcasting content to followers
     address public TrustedBroadcastAddress =
         0xebFE9190D00d61cA7dBCf00A0Cfdc6AE8E1B5264;
 
@@ -25,6 +27,8 @@ contract SuperclusterNFT is ERC721, ERC721URIStorage, Ownable {
         _setTokenURI(tokenId, uri);
     }
 
+    /// @notice Allows changing of TrustedBroadcastAddress by owner
+    /// @param _TBA The new Trusted Broadcast Address
     function setTBA(address _TBA) public onlyOwner {
         TrustedBroadcastAddress = _TBA;
     }

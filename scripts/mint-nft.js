@@ -1,6 +1,16 @@
 require("dotenv").config();
 const { ethers } = require("hardhat");
 
+/// @notice code to mint nft for specific contract, user, with a URI.
+/// contractAddress will need to modified to the NFT contract
+/// wallet address and URI will need to be provided to use the mint function.
+/// Example:
+/// wallet = "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20";
+/// await mintNFT(
+///   wallet,
+///   "ipfs://bafkreihvcifpkay3q7jzjqrdtrc34loqcw4iiquasl36xcpn3pj6dbla2y"
+/// );
+
 async function main() {
   const API_URL = process.env.API_URL;
   const RINKEBY_API_URL = process.env.RINKEBY_API_URL;
@@ -23,6 +33,9 @@ async function main() {
 
   const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
+  /// @notice a function to mint NFT with tokenURI to address address
+  /// @param address the address that will receive the NFT
+  /// @param tokenURI the NFT JSON file
   async function mintNFT(address, tokenURI) {
     const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest"); //get latest nonce
     // const accountNonce =
@@ -71,18 +84,21 @@ async function main() {
       });
   }
 
-  //   "https://bafkreih4msosv74zxrxffbgysc7dztu4ficbxqxjvc5u563cbun7zu5xm4.ipfs.nftstorage.link/"
-
+  // List of team member wallets:
   // const wallets = [
   //   "0x5A7A9517f118dCCEfAFcB6AF99ADD30b904Ce9cb",
   //   "0xebFE9190D00d61cA7dBCf00A0Cfdc6AE8E1B5264",
   //   "0xE4475EF8717d14Bef6dCBAd55E41dE64a0cc8510",
   //   "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20",
   // ];
+
+  // List of Supercluster NFT jsons:
   //Supercluster NFT - Green Warrior - "ipfs://bafkreih4msosv74zxrxffbgysc7dztu4ficbxqxjvc5u563cbun7zu5xm4"
   //Supercluster NFT - Mandelbrot Wizard - "ipfs://bafkreic23ytqfhkeoc5mwvpwlrl7m5q3m47cwkvjv7peenejxzlzeqswsy"
   //Supercluster NFT - Galactic Traveler - "ipfs://bafkreibdwudd4snhxuieck5nyq5ho6e5tohszbq47kn3uox7q7kkmcb2yq"
   //Supercluster NFT - Recipe Guardian - "ipfs://bafkreihvcifpkay3q7jzjqrdtrc34loqcw4iiquasl36xcpn3pj6dbla2y"
+
+  //Mint a specific NFT for a wallet
 
   wallet = "0x6eD68a1982ac2266ceB9C1907B629649aAd9AC20";
   await mintNFT(
